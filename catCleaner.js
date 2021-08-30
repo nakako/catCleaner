@@ -9,6 +9,7 @@ const y_level_num_max = 4;    // 画面の上下分割数
 const par_high = canvas.height/(y_level_num_max);
 const y_level = [canvas.height, canvas.height-par_high*1, canvas.height-par_high*2, canvas.height-par_high*3];
 
+const body = document.getElementById('body');
 
 /* グローバルなゲームオブジェクト */
 const game = {
@@ -21,7 +22,7 @@ const game = {
 };
 
 
-/* 画像読み込み */
+/* 画像読み込み ------------------------------------------------------------------------------------*/
 console.log('画像のロードを開始します');
 let imgLoadCounter = 0;
 for(const imgName of imgNames){
@@ -46,8 +47,10 @@ for(const imgName of imgNames){
 }
 
 
-/* ゲームパラメータの初期化 */
+/* ゲームパラメータの初期化 ------------------------------------------------------------------------------------*/
 function init(){
+  body.style.overflow = 'hidden';   // ゲーム中は画面スクロール停止
+
   game.counter = 0;
   game.items = [];
   game.isGameOver = false;
@@ -61,37 +64,37 @@ function init(){
 }
 
 
-/* 定期処理 */
+/* 定期処理 ------------------------------------------------------------------------------------------------*/
 function ticker(){
   // 画面クリア
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // 背景の作成
+  // 背景の設定
   ctx.fillStyle = 'lavenderblush';
   ctx.fillRect(0, 0, canvas.width, canvas.height);  
 
-  // 画面上のアイテム描画
-  // 得点用アイテム(ちり紙)の描画
+  // 画面上のアイテム作成
+  // 得点用アイテム(ちり紙)の作成
   if(Math.floor(Math.random() * 50) === 0){
     console.log('ゴミが現れた！');
     createDust();
   }
-  // 敵アイテム(椅子)の描画
+  // 敵アイテム(椅子)の作成
   if(Math.floor(Math.random() * (100-game.counter/100)) === 0){
     console.log('椅子が現れた！');
     createChair();
   }
-  // 敵アイテム(植物)の描画
+  // 敵アイテム(植物)の作成
   if(Math.floor(Math.random() * (100-game.counter/100)) === 0){
     console.log('植木が現れた!');
     createPlant();
   }
 
-  // プレイヤーキャラクタの移動
+  // 移動処理
   moveCat();
   moveItems();
 
-  // プレイヤーキャラクタの描画
+  // 描画処理
   drawCat();
   drawItem();
   drawScore();
@@ -99,12 +102,12 @@ function ticker(){
   // 当たり判定
   hitCheck();
 
-  // カウンタ(経過時間)の処理
+  // カウンタ(経過時間)処理
   game.counter = (game.counter + 1) % 1000000;
 }
 
 
-/* オブジェクト作成 */
+/* オブジェクト作成 --------------------------------------------------------------------------------------------*/
 // プレイヤーキャラ(猫)
 function createCat(){
   game.cat = {
@@ -161,7 +164,7 @@ function createPlant(){
 }
 
 
-/* オブジェクト移動 */
+/* オブジェクト移動 ----------------------------------------------------------------------------------------------*/
 function moveCat(){
   game.cat.y = y_level[game.cat.y_level_num]-game.cat.height;
 }
@@ -175,7 +178,7 @@ function moveItems(){
 }
 
 
-/* オブジェクトの描画 */
+/* オブジェクトの描画 --------------------------------------------------------------------------------------------*/
 function drawCat(){
   ctx.drawImage(game.img.cat, game.cat.x, game.cat.y);
 }
@@ -194,7 +197,7 @@ function drawScore(){
 }
 
 
-/* 接触確認処理 */
+/* 接触確認処理 -------------------------------------------------------------------------------------------------*/
 function hitCheck() {
   for (const item of game.items) {
     if (Math.abs(game.cat.x - item.x) < (game.cat.width*0.7) &&
@@ -204,6 +207,7 @@ function hitCheck() {
         item.x = -item.width;
       }
       else{
+        body.style.overflow = 'auto';      // ゲーム終了後は画面スクロール許可
         game.isGameOver = true;
         ctx.fillStyle = 'black';
         ctx.font = 'bold 100px serif';
@@ -217,7 +221,7 @@ function hitCheck() {
 }
 
 
-/* キー操作時の処理 */
+/* キー操作時の処理 -------------------------------------------------------------------------------------------*/
 document.onkeydown = function(e){
   if(game.isGameOver === true){   // ゲームオーバー時
     // ゲームのスタート
@@ -229,12 +233,12 @@ document.onkeydown = function(e){
     // 猫の操作
     if (e.key === 'ArrowUp' && game.cat.y_level_num < y_level_num_max-1) {
       game.cat.y_level_num++;
-      console.log('上キーが押されました : y_level_num = ' + game.cat.y_level_num);
+      console.log('上キーが押されました : y_level_num = ' + game.cat.y_level_num);　//デバッグ用
       game.cat.y = y_level[game.cat.y_level_num] - game.img.cat.height;
     }
     else if (e.key === 'ArrowDown' && game.cat.y_level_num > 0) {
       game.cat.y_level_num--;
-      console.log('下キーが押されました : y_level_num = ' + game.cat.y_level_num);
+      console.log('下キーが押されました : y_level_num = ' + game.cat.y_level_num);　//デバッグ用
       game.cat.y = y_level[game.cat.y_level_num] - game.img.cat.height;
     }
   }
