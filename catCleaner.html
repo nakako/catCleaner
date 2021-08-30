@@ -1,15 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>猫のお掃除大作戦</title>
 </head>
-<body>
-  <h1 id="title">猫のお掃除大作戦</h1>
-  <canvas width="800px" height="450px" id="canvas"></canvas>
-  <script src="./catCleaner.js"></script>
+
+<body id="body">
+  <header>
+    <div class="header_container">
+      <a href="catCleaner.html" class="headA">猫のお掃除大作戦</a>
+  
+      <nav class="headB">
+        <ul>
+          <li><a href="#game">ゲーム</a></li>
+          <li><a href="#how-two">あそびかた</a></li>
+          <li><a href="#character">キャラクター紹介</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <section id="game">
+    <canvas width="800px" height="450px" id="canvas"></canvas>
+    <script src="./catCleaner.js"></script>
+  </section>
+
+
+  <section id="how-two">
+    <div class="container">
+      <h1>あそびかた</h1>
+      <p>上下キーを使ってネコを操作。<br>家具や植物を避けながら、ごみをたくさん拾ってナワバリの平和を守ろう！</p>
+    </div>
+  </section>
+
+  <section  id="character">
+    <div class="container">
+      <h1>キャラクター紹介</h1>
+
+      <table>
+        <tr>
+          <td>
+            <img src="./img/cat.png" alt=""></td>
+          <td>
+            <h2>ネコ: プレイヤー</h2>
+            <p>
+              好奇心旺盛な掃除ロボットライダー。<br>
+              相棒に乗ってナワバリの掃除と見回りをするのが日課。
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./img/soujiki.png" alt="">
+          </td>
+          <td>
+            <h2>相棒</h2>
+            <p>
+              吸引力と忍耐力に定評がある。<br>
+              華奢な見た目だが、ネコを乗せて走り回れる力持ち。<br>
+              周りが見えずに突っ走ったり、迷子になることがある。
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./img/dust.png" alt="">
+          </td>
+          <td>
+            <h2>ゴミ</h2>
+            <p>
+              いっぱい拾うとご主人に褒めてもらえる。
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./img/chair.png" alt="">
+          </td>
+          <td>
+            <h2>ソファー</h2>
+            <p>
+              当たると痛い。<br>
+              見回りには邪魔だけど、ふかふかでお昼寝をするには最高！
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./img/plant.png" alt="">
+          </td>
+          <td>
+            <h2>植物</h2>
+            <p>
+              当たると痛い。<br>
+              葉っぱで遊ぶと楽しい。
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+  </footer>
 </body>
 </html>

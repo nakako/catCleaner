@@ -1,7 +1,109 @@
 /* cssファイルのエンコードの種類(UTF-8)を明示 */
 @charset "UTF-8";
 
+/* 基本色の設定(cssの変数を作成)   --------------------------------------------------------------------- */
+:root{
+  --main-color: #5D9AB2;  /* --変数名: #設定値 */
+  --accent-color: #BF6A7A;
+  --dark-main-color: #2B5566;
+  --text-bright-color: #fff;
+  --gray-color: #ddd;
+  --back-color: #f9f4ef;
+}
 
+
+/* 基本設定：　ページ全体の表示設定    ------------------------------------------------------------------- */
+body{
+  margin: 0px;  /* デフォルトで入っている不要な余白を削除 */
+  margin-bottom: 30px;
+  font-family: 'メイリオ',                    /* (上から優先度高)　windows環境 */
+              'Hiragino Kaku Gothic Pro',   /* OS X, iOS環境 */
+              sans-serif;                   /* その他環境 */
+  font-size: 16px;
+  color: var(--dark-main-color);
+  background-color: var(--back-color);
+}
+
+/* ヘッダメニューの設定    ------------------------------------------------------------------------------ */
+header{
+  top: 0;             /* 表示位置を左上に固定 */
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: solid 1px var(--gray-color);
+}
+
+.header_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ヘッダA：サイト名 */
+.headA{
+  display: inline-block;
+  line-height: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--main-color);
+  color: var(--text-bright-color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ヘッダB：ナビゲーションメニュー */
+.headB ul{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.headB a{
+  display: block;
+  padding: 15px;
+  color: inherit;   /* inherit: 親要素の色を継承 */
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.headB a:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* ゲーム画面の設定    ------------------------------------------------------------------------------ */
+#game{
+  text-align:center;
+  margin-top: 20px;
+}
+
+/* canvas画面の装飾 */
 #canvas{
-  border: 2px solid black;
+  border: 2px solid var(--dark-main-color);
+}
+
+/* 説明画面の設定    ------------------------------------------------------------------------------ */
+/* 見出しの装飾 */
+h1{
+  padding-left: 0.5rem;
+  border-left: solid 0.75rem var(--accent-color);
+  font-size: 2rem;
+}
+
+/* 内容の装飾 */
+.container{
+  padding-left: 15px;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 2px solid var(--dark-main-color);
 }
