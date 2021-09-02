@@ -38,7 +38,7 @@ for(const imgName of imgNames){
       ctx.fillStyle = 'lavenderblush';
       ctx.fillRect(0, 0, canvas.width, canvas.height); 
       ctx.fillStyle = 'black';
-      ctx.font = 'bold 30px serif';
+      ctx.font = 'bold 30px sans-serif';
       ctx.fillText(`Enter を押して掃除スタート！`, 30, 200);
       ctx.drawImage(game.img.cat, canvas.width/3, canvas.height*2/3);
       ctx.drawImage(game.img.dust, canvas.width*2/3, canvas.height*2/3+game.img.dust.height);
@@ -114,7 +114,6 @@ function createCat(){
     y_level_num: 0,
     x: 50, 
     y: y_level[0]-game.img.cat.height,
-    // moveY: 0,
     width: game.img.cat.width,
     height: game.img.cat.height,
     img: game.img.cat
@@ -191,7 +190,7 @@ function drawItem(){
 
 function drawScore(){
   ctx.fillStyle = 'black';
-  ctx.font = '24px serif';
+  ctx.font = '24px sans-serif';
   ctx.fillText(`上下キーで移動`, 0, 30);
   ctx.fillText(`time: ${game.counter}　　score: ${game.score}`, canvas.width - 350, 30);
 }
@@ -210,9 +209,9 @@ function hitCheck() {
         body.style.overflow = 'auto';      // ゲーム終了後は画面スクロール許可
         game.isGameOver = true;
         ctx.fillStyle = 'black';
-        ctx.font = 'bold 100px serif';
+        ctx.font = 'bold 100px sans-serif';
         ctx.fillText(`Game Over!`, 60, 200);
-        ctx.font = 'bold 30px serif';
+        ctx.font = 'bold 30px sans-serif';
         ctx.fillText(`Enter を押してもう一度チャレンジ`, 150, 300);
         clearInterval(game.timer);
       }
