@@ -38,7 +38,7 @@ for(const imgName of imgNames){
       ctx.fillStyle = 'lavenderblush';
       ctx.fillRect(0, 0, canvas.width, canvas.height); 
       ctx.fillStyle = 'black';
-      ctx.font = 'bold 30px sans-serif'
+      ctx.font = 'bold 30px sans-serif';
       ctx.fillText(`Enter を押して掃除スタート！`, 30, 200);
       ctx.drawImage(game.img.cat, canvas.width/3, canvas.height*2/3);
       ctx.drawImage(game.img.dust, canvas.width*2/3, canvas.height*2/3+game.img.dust.height);
