@@ -21,7 +21,6 @@ body{
   margin: 0px;  /* デフォルトで入っている不要な余白を削除 */
   margin-bottom: 30px;
   font-family: 'Kaisei Decol', sans-serif;
-
   font-size: 16px;
   color: var(--dark-main-color);
   background-color: var(--back-color);
