@@ -1,6 +1,10 @@
 /* cssファイルのエンコードの種類(UTF-8)を明示 */
 @charset "UTF-8";
 
+/* google fontsからフォントの読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap');
+
+
 /* 基本色の設定(cssの変数を作成)   --------------------------------------------------------------------- */
 :root{
   --main-color: #5D9AB2;  /* --変数名: #設定値 */
@@ -16,9 +20,8 @@
 body{
   margin: 0px;  /* デフォルトで入っている不要な余白を削除 */
   margin-bottom: 30px;
-  font-family: 'メイリオ',                    /* (上から優先度高)　windows環境 */
-              'Hiragino Kaku Gothic Pro',   /* OS X, iOS環境 */
-              sans-serif;                   /* その他環境 */
+  font-family: 'Kaisei Decol', sans-serif;
+
   font-size: 16px;
   color: var(--dark-main-color);
   background-color: var(--back-color);
@@ -48,7 +51,6 @@ header{
   padding-right: 20px;
   background-color: var(--main-color);
   color: var(--text-bright-color);
-  font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   text-decoration: none;
   font-weight: bold;
@@ -66,7 +68,7 @@ header{
   display: block;
   padding: 15px;
   color: inherit;   /* inherit: 親要素の色を継承 */
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: none;
 }
 
